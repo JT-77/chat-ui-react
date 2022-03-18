@@ -35,6 +35,7 @@ export interface ActionRequest {
 
 export interface TextActionRequest extends ActionRequest {
   type: 'text';
+  datatype?: string;
   defaultValue?: string;
   placeholder?: string;
   sendButtonText?: string;
@@ -88,6 +89,7 @@ export interface ActionResponse {
 
 export interface TextActionResponse extends ActionResponse {
   type: 'text';
+  datatype?: string
 }
 
 export interface SelectActionResponse extends ActionResponse {
