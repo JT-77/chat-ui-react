@@ -47,11 +47,26 @@ yarn add chat-ui-react react react-dom @material-ui/core
 ### CDN
 
 ```html
-<script crossorigin="anonymous" src="https://unpkg.com/react@16/umd/react.development.js"></script>
-<script crossorigin="anonymous" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-<script crossorigin="anonymous" src="https://unpkg.com/@material-ui/core@4/umd/material-ui.development.js"></script>
-<script crossorigin="anonymous" src="https://unpkg.com/chat-ui-react@latest/dist/browser/chat-ui-react.umd.polyfill.js"></script>
-<script crossorigin="anonymous" src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
+<script
+  crossorigin="anonymous"
+  src="https://unpkg.com/react@16/umd/react.development.js"
+></script>
+<script
+  crossorigin="anonymous"
+  src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+></script>
+<script
+  crossorigin="anonymous"
+  src="https://unpkg.com/@material-ui/core@4/umd/material-ui.development.js"
+></script>
+<script
+  crossorigin="anonymous"
+  src="https://unpkg.com/chat-ui-react@latest/dist/browser/chat-ui-react.umd.polyfill.js"
+></script>
+<script
+  crossorigin="anonymous"
+  src="https://unpkg.com/@babel/standalone@7/babel.min.js"
+></script>
 ```
 
 ## Usage
@@ -124,6 +139,7 @@ The return value of the method is a `Promise` that returns the user input.
 ```typescript
 const response = await chatCtl.setActionRequest({
   type: 'text',
+  datatype: 'text' | 'number' | 'password'
   always: false,
 });
 console.log(response.value);
@@ -136,12 +152,9 @@ Specify the callback function that receives the input because it is input multip
 To cancel the input request from the user, call the `cancelActionRequest` method.
 
 ```typescript
-chatCtl.setActionRequest(
-  { type: 'text', always: true },
-  (response) => {
-    console.log(response.value);
-  }
-);
+chatCtl.setActionRequest({ type: 'text', always: true }, (response) => {
+  console.log(response.value);
+});
 chatCtl.cancelActionRequest();
 ```
 

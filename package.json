@@ -9,7 +9,7 @@
     "material-ui"
   ],
   "license": "MIT",
-  "author": "twihike",
+  "author": "jt-77",
   "files": [
     "dist"
   ],
@@ -19,7 +19,7 @@
   "types": "dist/types/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/twihike/chat-ui-react.git"
+    "url": "https://github.com/JT-77/chat-ui-react"
   },
   "scripts": {
     "build": "run-s build:*",
