@@ -70,6 +70,17 @@ export function MuiTextInput({
         maxRows={10}
       />)
       :
+      actionRequest.datatype === 'number' ? 
+      (<TextField
+        placeholder={actionRequest.placeholder}
+        value={value}
+        type={actionRequest.datatype}
+        onChange={(e): void => setValue(e.target.value)}
+        autoFocus
+        inputProps={{ onKeyDown: handleKeyDown, min: 0 }}
+        variant="outlined"
+      />)
+      :
       (<TextField
         placeholder={actionRequest.placeholder}
         value={value}
