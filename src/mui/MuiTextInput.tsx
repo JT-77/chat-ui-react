@@ -13,6 +13,21 @@ export function MuiTextInput({
 }): React.ReactElement {
   const chatCtl = chatController;
   const [value, setValue] = React.useState(actionRequest.defaultValue);
+  const [dis, setDis] = React.useState(true)
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
+    const val = e.target.value;
+    let pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
+
+    if(val.match(pattern)) {
+      setDis(false);              
+    } else {
+      setDis(true);              
+    }
+        
+    setValue(val); 
+  }
 
   const setResponse = React.useCallback((): void => {
     if (value) {
@@ -85,12 +100,25 @@ export function MuiTextInput({
         placeholder={actionRequest.placeholder}
         value={value}
         type={actionRequest.datatype}
-        onChange={(e): void => setValue(e.target.value)}
+        onChange={handleChange}
         autoFocus
         inputProps={{ onKeyDown: handleKeyDown }}
         variant="outlined"
       />)
       }
+      {
+        actionRequest.datatype === 'email' ?
+        <Button
+        type="button"
+        onClick={setResponse}
+        disabled={dis}
+        variant="contained"
+        color="primary"
+        startIcon={<Icon>send</Icon>}
+      >
+        {sendButtonText}
+      </Button>
+      :
       <Button
         type="button"
         onClick={setResponse}
@@ -101,6 +129,7 @@ export function MuiTextInput({
       >
         {sendButtonText}
       </Button>
+      }
     </Box>
   );
 }
