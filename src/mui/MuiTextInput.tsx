@@ -43,6 +43,10 @@ export function MuiTextInput({
         return;
       }
 
+      if (actionRequest.datatype === 'email' && dis === true) {
+        return;
+      }
+
       if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
         setResponse();

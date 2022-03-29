@@ -40,8 +40,9 @@ export function MuiMessage({
   );
 
   const ChatDate = (
-    <Box maxWidth="100%" mx={1}>
+    <Box maxWidth="100%" mx={1} className="date-box">
       <Typography
+      className="date-typography"
         variant="body2"
         align={message.self ? 'right' : 'left'}
         color="textSecondary"
@@ -58,7 +59,7 @@ export function MuiMessage({
     <Grow in>
       <Box maxWidth="100%" display="flex" flexDirection="column">
         {showDate && (
-          <Typography align="center">
+          <Typography align="center" className="chat-date-typography">
             {dispDate?.toLocaleDateString()}
           </Typography>
         )}
@@ -69,23 +70,25 @@ export function MuiMessage({
           pl={message.self ? '20%' : 0}
           pr={message.self ? 0 : '20%'}
           display="flex"
+          className="mess-box"
           justifyContent={message.self ? 'flex-end' : 'flex-start'}
           style={{ overflowWrap: 'break-word' }}
         >
           {message.avatar && !message.self && ChatAvator}
-          <Box minWidth={0} display="flex" flexDirection="column">
+          <Box minWidth={0} display="flex" flexDirection="column" className="mess-box-username">
             {message.username && ChatUsername}
             <Box
               maxWidth="100%"
               py={1}
               px={2}
+              className="mess-box-content"
               bgcolor={message.self ? 'primary.main' : 'background.paper'}
               color={message.self ? 'primary.contrastText' : 'text.primary'}
               borderRadius={4}
               boxShadow={2}
             >
               {message.type === 'text' && (
-                <Typography variant="body1" style={{ whiteSpace: 'pre-wrap' }}>
+                <Typography variant="body1" className="mess-chat-content" style={{ whiteSpace: 'pre-wrap' }}>
                   {message.content}
                 </Typography>
               )}
