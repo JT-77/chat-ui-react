@@ -70,7 +70,7 @@ export function MuiMessage({
           pl={message.self ? '20%' : 0}
           pr={message.self ? 0 : '20%'}
           display="flex"
-          className="mess-box"
+          className={message.self ? 'mess-box-self' : 'mess-box'}
           justifyContent={message.self ? 'flex-end' : 'flex-start'}
           style={{ overflowWrap: 'break-word' }}
         >
@@ -81,14 +81,14 @@ export function MuiMessage({
               maxWidth="100%"
               py={1}
               px={2}
-              className="mess-box-content"
+              className={message.self ? 'mess-box-content-self' : 'mess-box-content'}
               bgcolor={message.self ? 'primary.main' : 'background.paper'}
               color={message.self ? 'primary.contrastText' : 'text.primary'}
               borderRadius={4}
               boxShadow={2}
             >
               {message.type === 'text' && (
-                <Typography variant="body1" className="mess-chat-content" style={{ whiteSpace: 'pre-wrap' }}>
+                <Typography variant="body1" className={message.self ? 'mess-chat-content-self' : 'mess-chat-content'} style={{ whiteSpace: 'pre-wrap' }}>
                   {message.content}
                 </Typography>
               )}

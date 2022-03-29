@@ -101,7 +101,7 @@ export function MuiChat({
         ref={msgRef}
       >
         {messages.map((msg): React.ReactElement => {
-          let showDate = true;
+          let showDate = false;
           let showTime = !!chatCtl.getOption().showDateTime;
           if (!!chatCtl.getOption().showDateTime && !msg.deletedAt) {
             const current = dayjs(
